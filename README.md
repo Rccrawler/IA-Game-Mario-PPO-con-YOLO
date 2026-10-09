@@ -1,8 +1,6 @@
 # IA Game - Mario PPO con YOLO
 
-<video src="2026-10-09%2009-41-37.mkv" controls width="100%">
-  Tu navegador/visor de Markdown no soporta la etiqueta de vídeo. Puedes ver la demostración abriendo el archivo local 2026-10-09 09-41-37.mkv.
-</video>
+![Mario IA Gameplay](gameplay.gif)
 
 ## Orden para que funcione
 
