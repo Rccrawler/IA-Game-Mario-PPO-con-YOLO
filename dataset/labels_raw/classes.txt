@@ -1,0 +1,6 @@
+coin
+goomba
+ground
+koopa
+mario
+pipe

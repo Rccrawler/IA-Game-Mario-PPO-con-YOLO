@@ -1,0 +1,10 @@
+path: C:\Users\Andrew\Downloads\iagame\dataset\yolo
+train: images/train
+val: images/val
+names:
+  0: coin
+  1: goomba
+  2: ground
+  3: koopa
+  4: mario
+  5: pipe

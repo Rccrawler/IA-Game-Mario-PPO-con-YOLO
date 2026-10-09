@@ -1,0 +1,39 @@
+Orden para que funcione
+
+
+1 python capture_frames.py: genera las imágenes en dataset/images.
+Dentro de templates/, una carpeta por clase con tus recortes: ground, goomba, koopa, mario, coin, pipe, y block si quieres bloques aparte.
+
+2 python label_and_train.py preview: revisas las cajas en dataset/preview.
+
+3 python label_and_train.py label: genera las etiquetas.
+
+4 python label_and_train.py train: entrena YOLO.
+
+5 python mario_ppo_yolo.py: entrena el agente (Ctrl+C para parar).
+
+6 python mario_ppo_yolo.py play: lo ves jugar.
+
+
+
+
+
+
+como funciona la red:
+
+
+Lo que pides se puede hacer en gran parte, y te explico qué es posible y qué no antes del código.
+
+Lo que cambia:
+
+1
+Sin píxeles. Se elimina la CNN: el agente solo recibe lo que YOLO detecta.
+
+2
+Razonar "esto es malo". Un agente de RL no razona con lógica, pero podemos darle una estructura que se parezca. Cada objeto pasa por una red compartida que conoce su clase (un embedding, así aprende qué es un goomba frente a una moneda) y calcula una relevancia (cuánto importa ese objeto ahora mismo). Además, el agente tiene una tarea extra: predecir si va a morir en los próximos 20 pasos. Para acertar, la red tiene que aprender que "goomba cerca = peligro". Es la forma de que asocie objeto con peligro por sí mismo.
+
+3
+Velocidad de Mario. Sin píxeles no ve el movimiento, así que se le da cuánto se ha movido Mario desde el paso anterior (necesario para saber si sube o cae en un salto).
+
+4
+Penalización extra por morir.
